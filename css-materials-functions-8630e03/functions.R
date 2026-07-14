@@ -18,9 +18,12 @@ total <- sum(10,20)/2
 #total
 
 # Write the code without a function
-
+numbers <- (10+20)/2
+#numbers
 
 # Re-write it with a function
+numbers <- sum(10+20)/2
+numbers
 
 
 
