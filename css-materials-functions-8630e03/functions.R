@@ -11,7 +11,15 @@
 
 
 # QUESTION 1. Sum the numbers 10 and 20, and divide the total by 2 
+# help(sum)
+# numbers <- sum(10,20, na.rm = FALSE)
+# total <- print(numbers/2)
+total <- sum(10,20)/2
+total
+
 # Write the code without a function
+
+
 # Re-write it with a function
 
 
