@@ -1,0 +1,152 @@
+---
+title: "Untitled"
+output: pdf_document
+date: "2026-07-14"
+---
+
+penguins |> 
+  select(where(is.numeric)) |>
+  map_dbl(mean, na.rm = TRUE)
+  
+```{r}
+library(tidyverse)
+library(palmerpenguins)
+
+penguins |> 
+  select(where(is.numeric)) |>
+  map(mean, na.rm = TRUE)
+```
+map_??? output
+<!-- output 1 -->
+bill_length_mm     bill_depth_mm flipper_length_mm       body_mass_g 
+         43.92193          17.15117         200.91520        4201.75439 
+             year 
+       2008.02907 
+       
+map output       
+<!-- Output 2  -->
+$bill_length_mm
+[1] 43.92193
+
+$bill_depth_mm
+[1] 17.15117
+
+$flipper_length_mm
+[1] 200.9152
+
+$body_mass_g
+[1] 4201.754
+
+$year
+[1] 2008.029
+
+
+# Option 1
+```{r}
+penguins |> 
+  summarize(
+    across(
+      .cols = where(is.numeric),           # select columns by type
+      .fns = ~ mean(.x, na.rm = TRUE)))    # apply mean, skipping NA
+```
+
+# Option 2
+```{r}
+ penguins |> summarize(across(where(is.numeric), ~ mean(.x, na.rm = TRUE)))
+```
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Slide 21
+```{r}
+# Use numeric columns from penguins dataset
+num_data <- penguins[ , 3:6]
+
+# apply(): function across columns (MARGIN = 2)
+apply(num_data, 2, mean, na.rm = TRUE)
+
+# lapply(): list output
+lapply(num_data, mean, na.rm = TRUE)
+
+# sapply(): simplified vector output
+sapply(num_data, mean, na.rm = TRUE)
+
+# vapply(): safe version of sapply()
+vapply(num_data, mean, na.rm = TRUE, FUN.VALUE = numeric(1))
+```
+
+# Slide 22.   
+```{r}
+num_data <- penguins[ , 3:6]
+sapply(num_data, median, na.rm = TRUE)
+```
+
+# Option 3
+```{r}
+num_data <- penguins[ , 3:6]
+sapply(num_data, median, na.rm = TRUE)
+```
+
+```{r}
+counter <- 1
+
+while(counter <= 4) {
+  print(counter)
+  counter <- counter + 1
+}
+```
+
+```{r}
+counter <- 1
+
+while(counter <= 3) {
+  print(counter)
+  counter <- counter + 1
+  print(counter)
+}
+```
+
+3. Introduction to Functions
+```{r}
+help(mean)
+help(across)
+```
+
+
+```{r}
+# define the function
+my_sum <- function(vector) {
+  total <- 0
+  for (i in seq_along(vector)) {
+    total <- total + vector[i]
+  }
+  return(total)
+}
+
+# all the function
+x <- c(2,1,5,2)
+y <- c(3,3,3)
+my_sum(x)
+my_sum(y)
+
+# rewrite this code outside funtion
+x <- c(2,1,5,2)
+my_sum(x)
+my_sum(y)
+```
